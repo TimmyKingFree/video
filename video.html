@@ -1,8 +1,80 @@
 <html>
 <head>
-	<title></title>
+	<title>video</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		video{
+			background-color: rgba(100,100,100,0.7);
+			margin-left: 165px;
+		}
+		.videoUl{
+			position:fixed;
+			top:0;
+			left:0;
+			padding:0;
+			margin:0;
+		}
+		.videoUl li{
+			list-style:none;
+			background-color: white;
+			width:160px;
+			padding:5px;
+			border-bottom: 1px solid #ddd;
+			cursor:pointer;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow:ellipsis;
+			line-height: 30px;
+		}
+		.activateLi{
+			border-left:2px solid orange;
+			background-color: #4285f4!important;
+			color:white;
+		}
+		.speed{
+			margin-left: 165px;
+			font-size: 14px;
+		}
+		.speed div{
+			margin:5px;
+		}
+	</style>
 </head>
 <body>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+	var videoList  = [
+		'http://gslb.miaopai.com/stream/RuIDpHHRSR9s~xg0jhyZa9qi2p9HRj3j.mp4?vend=miaopai&',
+		'http://gslb.miaopai.com/stream/Gnx29E0u1KJZpmtS1mJwwAwS46splHb2.mp4?vend=miaopai&'
+	]
+	$(document).ready(function(){
+		$("li").click(function(){
+			$("li").removeClass("activateLi");
+			$("video").attr("src",videoList[$(this).index()]);
+			$(this).addClass("activateLi")			
+		});
+		$("button").click(function(){
+			$("video")[0].playbackRate = $(this).html();
+			console.log($(this).html())
+		})
+	})
+	</script>
+	<video width="640" height="360" src="http://gslb.miaopai.com/stream/RuIDpHHRSR9s~xg0jhyZa9qi2p9HRj3j.mp4?vend=miaopai&" controls="controls">
+		您的浏览器不支持HTML5视频播放，请升级您的操作系统或浏览器版本，建议使用Chrome浏览器
+	</video>
+	<ul class="videoUl">
+		<li class="activateLi">仙剑三we23454322334242</li>
+		<li>其他</li>
+	</ul>
+	<div class="speed"> 
+		<div>速度选择</div>
+		<button>0.5</button>
+		<button>1</button>
+		<button>2</button>
+		<button>4</button>
+		<button>6</button>
+	</div>
+
 
 </body>
 </html>
